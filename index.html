@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101923">
+  <meta name="description" content="SIRAT AI Universe — one workspace for official AI APIs, compatible providers, and local models.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./src/styles.css">
+  <title>SIRAT AI Universe</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./" aria-label="SIRAT AI Universe home">
+        <span class="brand-mark">S</span><span><strong>SIRAT</strong><small>AI UNIVERSE</small></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview">Overview</button>
+        <button class="nav-item" data-view="workspace">AI Workspace</button>
+        <button class="nav-item" data-view="providers">Providers</button>
+        <button class="nav-item" data-view="capabilities">Capabilities</button>
+        <button class="nav-item" data-view="security">Security</button>
+      </nav>
+      <div class="sidebar-foot"><span><i class="status-dot"></i>Local workspace</span><small>© SIRAT / DEV MD Nazmul ALAM MITHU</small></div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">UNIFIED MODEL CONTROL PLANE</p><h1 id="view-title">Overview</h1></div>
+        <span class="pill"><i class="status-dot"></i>Free-first edition</span>
+      </header>
+
+      <section class="view active" id="view-overview">
+        <div class="hero">
+          <div><p class="eyebrow">ONE WORKSPACE · MANY PROVIDERS</p><h2>Use the AI access<br>you actually have.</h2>
+            <p>Connect official APIs, compatible gateways, or local models. Inspect capabilities without pretending a subscription is active.</p>
+            <button class="primary" data-go="workspace">Open AI workspace</button>
+          </div>
+          <div class="hero-orbit" aria-hidden="true"><span>AI</span><i></i><b></b><em></em></div>
+        </div>
+        <div class="stat-grid">
+          <article class="stat-card"><span>Provider catalog</span><strong id="provider-count">0</strong><small>Known integration paths</small></article>
+          <article class="stat-card"><span>Configured</span><strong id="configured-count">0</strong><small>Saved endpoints, no API keys</small></article>
+          <article class="stat-card"><span>Active session</span><strong id="session-status">Offline</strong><small>Changes after a successful request</small></article>
+        </div>
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">IMPORTANT</p><h3>Entitlement integrity</h3></div><span class="pill neutral">Provider-controlled</span></div>
+          <p>SIRAT can organize and use features your account, API key, or local model genuinely exposes. It cannot grant paid plans, remove quotas, impersonate accounts, or unlock server-side premium models.</p>
+        </article>
+      </section>
+
+      <section class="view" id="view-workspace">
+        <div class="workspace-grid">
+          <article class="panel config-panel"><p class="eyebrow">CONNECTION</p><h3>Provider setup</h3>
+            <label>Provider<select id="provider-select"></select></label>
+            <label>Endpoint<input id="endpoint" type="url" autocomplete="url" placeholder="https://api.example.com/v1"></label>
+            <label>Model ID<input id="model" type="text" autocomplete="off" placeholder="Enter a model enabled for your account"></label>
+            <label>API key<input id="api-key" type="password" autocomplete="off" placeholder="Key stays in memory for this tab"></label>
+            <p class="hint" id="provider-note">Choose a provider to see its integration notes.</p>
+            <div class="button-row"><button class="secondary" id="save-provider">Save settings</button><button class="secondary" id="open-provider">Open provider/docs</button></div>
+            <p class="hint warning">API keys are not saved. Avoid using this client-side interface on shared devices or public deployments.</p>
+          </article>
+          <article class="panel chat-panel">
+            <div class="panel-heading"><div><p class="eyebrow">MODEL SESSION</p><h3>AI Workspace</h3></div><span class="pill neutral" id="chat-status">Not connected</span></div>
+            <div class="chat-log" id="chat-log" aria-live="polite"><div class="empty-state">Choose a provider, enter an enabled model ID, and send a message.</div></div>
+            <form id="chat-form"><label class="sr-only" for="prompt">Message</label><textarea id="prompt" rows="3" placeholder="Ask your selected model…" required></textarea>
+              <div class="chat-actions"><span class="hint">API usage may incur provider charges.</span><button class="primary" type="submit" id="send-button">Send message</button></div>
+            </form>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" id="view-providers"><div class="section-intro"><p>Connect through documented APIs or open the official consumer website. Browser-only entries do not extract cookies or private sessions.</p></div><div class="provider-grid" id="provider-grid"></div></section>
+
+      <section class="view" id="view-capabilities"><article class="panel"><p class="eyebrow">CAPABILITY REGISTRY</p><h3>Feature availability</h3>
+        <p>Each feature is evidence-based. Unknown means not verified; entitlement-required means the provider controls access. No local toggle can change the provider's server-side permission.</p>
+        <div class="capability-list" id="capability-list"></div>
+      </article></section>
+
+      <section class="view" id="view-security"><article class="panel"><p class="eyebrow">LOCAL-FIRST SECURITY</p><h3>Credential handling</h3>
+        <ul class="security-list">
+          <li>API keys stay in page memory and are not persisted.</li><li>Saved settings contain provider ID, endpoint, and model only.</li>
+          <li>No Google cookies, browser tokens, or hidden web-app RPCs are read.</li><li>Errors are redacted before display.</li>
+          <li>Requests go directly from this browser to the endpoint you configure.</li><li>Do not expose this app publicly with a personal API key entered.</li>
+        </ul>
+        <button class="danger" id="clear-settings">Clear saved provider settings</button>
+      </article></section>
+      <footer>SIRAT AI UNIVERSE <span>·</span> 0.1.0 <span>·</span> Built for transparent, authorized AI access</footer>
+    </main>
+  </div>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
