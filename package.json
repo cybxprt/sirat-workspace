@@ -1,0 +1,15 @@
+{
+  "name": "sirat-ai-universe",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Provider-neutral AI workspace for official APIs, compatible endpoints, and local models.",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/core.js && node --check src/providers.js && node --check src/app.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
