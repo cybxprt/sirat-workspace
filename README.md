@@ -24,7 +24,7 @@ Provider names do not imply that an account has access, a free quota, or a parti
 
 ## Quick start
 
-Requires Node.js 20+ (or Python 3).
+Requires Node.js 22+ (or Python 3).
 
 ```bash
 npm run build
