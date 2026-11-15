@@ -5,8 +5,9 @@
   "type": "module",
   "description": "Provider-neutral AI workspace for official APIs, compatible endpoints, and local models.",
   "scripts": {
+    "build": "node scripts/build.mjs",
     "test": "node --test",
-    "check": "node --check src/core.js && node --check src/providers.js && node --check src/app.js"
+    "check": "node --check src/core.js && node --check src/providers.js && node --check src/app.js && node --check scripts/build.mjs"
   },
   "engines": {
     "node": ">=20"
